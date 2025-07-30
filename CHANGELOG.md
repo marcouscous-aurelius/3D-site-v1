@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.5.1] - 2025-07-30
+
+### Fixed
+- Enhanced cube lighting effects
+  - Adjusted point light range from 10 to 20 units for better visibility
+  - Modified cube activation threshold to trigger when cubes are within 1.5 units
+  - Improved overall lighting responsiveness
+
 ## [2.5.0] - 2025-07-30
 
 ### Improved
