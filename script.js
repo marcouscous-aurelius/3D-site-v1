@@ -1351,4 +1351,4 @@ if (toolboxV2) {
         applyConstraints();
         updateToolboxPosition();
     });
-} 
+}
