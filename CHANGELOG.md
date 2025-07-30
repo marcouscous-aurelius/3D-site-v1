@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.50.0] - 2025-07-30
+## [2.5.0] - 2025-07-30
 
 ### Improved
 - Optimized CSS performance
