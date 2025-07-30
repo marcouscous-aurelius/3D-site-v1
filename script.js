@@ -1155,11 +1155,10 @@ if (toolboxV2) {
         posY = MARGIN;
         targetX = posX;
         targetY = posY;
-        
-        // Switch to transform-based positioning
-        toolboxV2.style.right = 'auto';
-        toolboxV2.style.left = '0';
-        toolboxV2.style.top = '0';
+        // Start on the right, do not override with left:0
+        toolboxV2.style.right = '20px';
+        toolboxV2.style.left = 'auto';
+        toolboxV2.style.top = '20px';
         updateToolboxPosition();
     }
     
@@ -1295,8 +1294,14 @@ if (toolboxV2) {
             targetX = currentX - offsetX;
             targetY = currentY - offsetY;
             
-            const currentTime = performance.now();
-            const deltaTime = currentTime - lastUpdateTime;
+    // Update cube lighting effects (add direct hover effect)
+    updateCubeLighting();
+    // Highlight hovered cube with lighting effect
+    if (intersectedCube) {
+        if (typeof cubeLightingManager.activateCube === 'function') {
+            cubeLightingManager.activateCube(intersectedCube);
+        }
+    }
             updateVelocity(currentX, currentY, deltaTime);
             
             lastMouseX = currentX;
