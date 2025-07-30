@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.1.0] - 2025-07-30
+
+### Improved
+- Optimized CSS performance
+  - Added will-change property for transform optimization
+  - Improved touch handling with touch-action
+  - Added contain property for better rendering performance
+  - Added Safari support for backdrop-filter
+  - Updated version number in navbar to v2.1.0
+
 ## [2.0.0] - 2025-07-30
 
 ### Added
