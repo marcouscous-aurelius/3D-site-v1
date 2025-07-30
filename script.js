@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { updateCubeLighting } from './js/objects/cubes.js';
+import { cubeLightingManager } from './js/objects/cubeLighting.js';
 
 // Scene setup
 const scene = new THREE.Scene();
