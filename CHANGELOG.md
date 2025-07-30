@@ -1,5 +1,12 @@
 # Changelog
 
+
+## [2.5.2] - 2025-07-30
+
+### Fixed
+- Cube lighting now reacts to direct mouse hover (hovered cube is always lit)
+- Toolbox starts on the right and remains fully responsive to drag/minimize
+
 ## [2.5.1] - 2025-07-30
 
 ### Fixed

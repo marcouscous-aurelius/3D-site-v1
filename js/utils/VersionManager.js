@@ -3,8 +3,8 @@ export class VersionManager {
         this.versionElement = document.querySelector('.version-tag');
         this.currentVersion = {
             major: 2,
-            minor: 0,
-            patch: 18
+            minor: 5,
+            patch: 2
         };
         this.updateDisplay();
     }
