@@ -1,6 +1,6 @@
 {
   "name": "3d-site-v1",
-  "version": "2.5.0",
+  "version": "2.5.3",
   "description": "Interactive 3D cube grid with dynamic lighting effects",
   "main": "script.js",
   "scripts": {

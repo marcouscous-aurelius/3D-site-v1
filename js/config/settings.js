@@ -19,7 +19,7 @@ export const defaultSettingsV2 = {
         reducedShadowQuality: true,
         reducedParticles: true
     },
-    version: '2.5.2'
+    version: '2.0.0'
 };
 
 export const PHYSICS_CONFIG = {

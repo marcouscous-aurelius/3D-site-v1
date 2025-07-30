@@ -3,7 +3,7 @@ import './core/lights.js';
 import { controls } from './core/controls.js';
 import './objects/floor.js';
 import './objects/axes.js';
-import { cubeGroup, hitboxGroup, originalPositions, ANIMATION_CONFIG, hasNeighbor } from './objects/cubes.js';
+import { cubeGroup, hitboxGroup, originalPositions, ANIMATION_CONFIG, hasNeighbor, updateCubeLighting } from './objects/cubes.js';
 import { mouse } from './interaction/mouse.js';
 import { raycaster, pointer, pointerPixel, updateRaycaster } from './interaction/raycaster.js';
 import { initializeToolbox } from './ui/toolbox.js';
@@ -93,6 +93,7 @@ function animate() {
     camera.lookAt(0, 0, 0);
 
     controls.update();
+    updateCubeLighting(); // Update cube lighting effects
     renderer.render(scene, camera);
 }
 

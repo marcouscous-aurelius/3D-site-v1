@@ -1,7 +1,6 @@
-
 # 3D Interactive Cube Grid
 
-## Version 2.5.2
+## Version 2.0.0
 
 An interactive 3D cube grid with dynamic lighting effects built using Three.js.
 
@@ -13,19 +12,14 @@ An interactive 3D cube grid with dynamic lighting effects built using Three.js.
 - Customizable fog and background
 - Inner cube toggle functionality
 
-
-### New in 2.5.2
-- Cube lighting now reacts to direct mouse hover (hovered cube is always lit)
-- Toolbox starts on the right and remains fully responsive to drag/minimize
-
 ### New in 2.0.0
-  - Dynamic lighting system
-    - Second layer cubes emit light when outer neighbors move
-    - Automatic point lights for every 4th activated cube
-    - Customizable lighting controls:
-      - Emissive color
-      - Emissive intensity
-      - Point light intensity
+- Dynamic lighting system
+  - Second layer cubes emit light when outer neighbors move
+  - Automatic point lights for every 4th activated cube
+  - Customizable lighting controls:
+    - Emissive color
+    - Emissive intensity
+    - Point light intensity
 
 ## Technical Details
 
