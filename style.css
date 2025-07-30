@@ -10,7 +10,7 @@ body {
     color: #333;
 }
 
-/* Main Navigation Bar */
+/* Main Navigation Bar - Optimized */
 .main-nav {
     position: fixed;
     top: 20px;
@@ -19,17 +19,20 @@ body {
     z-index: 1000;
     width: auto;
     max-width: 90vw;
+    will-change: transform; /* Optimize transform performance */
 }
 
 .nav-container {
     display: flex;
-    background-color: rgba(255, 255, 255, 0.5); /* 50% transparent white */
-    border: 1px solid #ddd;                    /* light grey border */
-    border-radius: 12px;                       /* more pronounced rounding */
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #ddd;
+    border-radius: 12px;
     padding: 0;
     overflow: hidden;
     position: relative;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    contain: layout style; /* Optimize repaints */
 }
 
 .nav-section {
@@ -41,6 +44,8 @@ body {
     min-width: 80px;
     text-align: center;
     transition: background-color 0.2s ease;
+    contain: layout style paint; /* Optimize rendering */
+    touch-action: manipulation; /* Better touch handling */
 }
 
 .nav-section:not(:last-child)::after {
