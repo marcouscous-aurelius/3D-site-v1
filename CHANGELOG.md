@@ -1,11 +1,15 @@
 # Changelog
 
-
-## [2.5.2] - 2025-07-30
-
+## [2.5.3] - 2025-07-30
 ### Fixed
-- Cube lighting now reacts to direct mouse hover (hovered cube is always lit)
-- Toolbox starts on the right and remains fully responsive to drag/minimize
+- Enhanced cube lighting system performance and reliability
+  - Fixed cube lighting activation on hover
+  - Improved second layer cube interaction detection
+- Fixed toolbox functionality
+  - Restored proper dragging behavior with physics
+  - Fixed minimize/expand toggle functionality
+  - Added touch support for mobile devices
+  - Added position persistence between sessions
 
 ## [2.5.1] - 2025-07-30
 
