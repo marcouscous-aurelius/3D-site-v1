@@ -13,7 +13,7 @@ class CubeLightingManager {
         this.originalMaterials = new Map();
         this.activeCubes = new Set();
         this.pointLights = new ObjectPool(() => {
-            const light = new THREE.PointLight(0x00ff00, 1, 10);
+            const light = new THREE.PointLight(0x00ff00, 1, 20);
             light.intensity = 0.8;
             return light;
         }, 20); // Pre-allocate 20 lights
@@ -28,7 +28,7 @@ class CubeLightingManager {
         return neighbors.some(neighbor => {
             if (!neighbor) return false;
             const distance = position.distanceTo(neighbor.position);
-            return distance > 2; // Assuming 2 units is our threshold
+            return distance <= 1.5; // Activate when cubes are close
         });
     }
 
