@@ -1,0 +1,17 @@
+{
+  "name": "3d-site-v1",
+  "version": "2.0.0",
+  "description": "Interactive 3D cube grid with dynamic lighting effects",
+  "main": "script.js",
+  "scripts": {
+    "start": "serve ."
+  },
+  "author": "marcouscous-aurelius",
+  "license": "MIT",
+  "dependencies": {
+    "three": "latest"
+  },
+  "devDependencies": {
+    "serve": "latest"
+  }
+}

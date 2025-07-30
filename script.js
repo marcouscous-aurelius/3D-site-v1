@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { updateCubeLighting } from './js/objects/cubes.js';
 
 // Scene setup
 const scene = new THREE.Scene();
@@ -1025,6 +1026,9 @@ function animate() {
     const intersectedHitbox = intersects.length > 0 ? intersects[0].object : null;
     const intersectedCube = intersectedHitbox ? intersectedHitbox.userData.visualCube : null;
 
+    // Update cube lighting effects
+    updateCubeLighting();
+    
     cubeGroup.children.forEach(cube => {
         if (!cube.visible) return; // skip hidden inner cubes
         const originalPos = originalPositions.get(cube);
@@ -1351,4 +1355,4 @@ if (toolboxV2) {
         applyConstraints();
         updateToolboxPosition();
     });
-} 
+}
