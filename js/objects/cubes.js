@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { scene } from '../core/scene.js';
+import { cubeLightingManager } from './cubeLighting.js';
 
 export const cubeGroup = new THREE.Group();
 export const hitboxGroup = new THREE.Group();
@@ -23,6 +24,73 @@ export const ANIMATION_CONFIG = {
 
 export const gridSize = 6;
 export const gridCenterOffset = (gridSize - 1) / 2;
+
+// Helper function to get cube position index
+function getCubeIndex(position) {
+    return {
+        x: Math.round(position.x + gridCenterOffset),
+        y: Math.round(position.y + gridCenterOffset),
+        z: Math.round(position.z + gridCenterOffset)
+    };
+}
+
+// Helper function to get neighboring cubes
+function getNeighboringCubes(cube) {
+    const pos = getCubeIndex(cube.position);
+    const neighbors = [];
+    
+    // Check all 6 adjacent positions
+    const directions = [
+        { x: 1, y: 0, z: 0 }, { x: -1, y: 0, z: 0 },
+        { x: 0, y: 1, z: 0 }, { x: 0, y: -1, z: 0 },
+        { x: 0, y: 0, z: 1 }, { x: 0, y: 0, z: -1 }
+    ];
+    
+    for (const dir of directions) {
+        const nx = pos.x + dir.x;
+        const ny = pos.y + dir.y;
+        const nz = pos.z + dir.z;
+        
+        // Skip if outside grid
+        if (nx < 0 || nx >= gridSize || ny < 0 || ny >= gridSize || nz < 0 || nz >= gridSize) {
+            continue;
+        }
+        
+        // Find the cube at this position
+        const neighbor = cubeGroup.children.find(c => {
+            const nPos = getCubeIndex(c.position);
+            return nPos.x === nx && nPos.y === ny && nPos.z === nz;
+        });
+        
+        if (neighbor) {
+            neighbors.push(neighbor);
+        }
+    }
+    
+    return neighbors;
+}
+
+// Function to update cube lighting
+export function updateCubeLighting() {
+    // Get only the outer layer cubes
+    const outerLayerCubes = cubeGroup.children.filter(cube => {
+        const pos = getCubeIndex(cube.position);
+        return pos.x === 0 || pos.x === gridSize - 1 ||
+               pos.y === 0 || pos.y === gridSize - 1 ||
+               pos.z === 0 || pos.z === gridSize - 1;
+    });
+
+    // Get the second layer cubes
+    const secondLayerCubes = cubeGroup.children.filter(cube => {
+        const pos = getCubeIndex(cube.position);
+        return (pos.x === 1 || pos.x === gridSize - 2) ||
+               (pos.y === 1 || pos.y === gridSize - 2) ||
+               (pos.z === 1 || pos.z === gridSize - 2);
+    });
+
+    // Update lighting for second layer cubes based on outer layer neighbors
+    cubeLightingManager.update(secondLayerCubes, getNeighboringCubes);
+}
 
 // Create cube grid
 for (let x = 0; x < gridSize; x++) {

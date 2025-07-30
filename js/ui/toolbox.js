@@ -1,5 +1,6 @@
 import { scene } from '../core/scene.js';
 import { cubeGroup, hitboxGroup, gridSize } from '../objects/cubes.js';
+import { cubeLightingManager } from '../objects/cubeLighting.js';
 
 // DOM Elements
 export const toolboxV2 = document.getElementById('toolbox-v2');
@@ -18,11 +19,42 @@ export const cubeColorPickerV2 = document.getElementById('cubeColorPicker-v2');
 export const cubeOpacitySliderV2 = document.getElementById('cubeOpacitySlider-v2');
 export const cubeOpacityValueV2 = document.getElementById('cubeOpacityValue-v2');
 
+// Cube Lighting Controls
+export const emissiveColorPickerV2 = document.getElementById('emissiveColorPicker-v2');
+export const emissiveIntensitySliderV2 = document.getElementById('emissiveIntensitySlider-v2');
+export const emissiveIntensityValueV2 = document.getElementById('emissiveIntensityValue-v2');
+export const lightIntensitySliderV2 = document.getElementById('lightIntensitySlider-v2');
+export const lightIntensityValueV2 = document.getElementById('lightIntensityValue-v2');
+
 // Initialize UI
 export function initializeToolbox() {
     if (toolboxToggleBtn) {
         toolboxToggleBtn.addEventListener('click', () => {
             toolboxV2.classList.toggle('collapsed');
+        });
+    }
+
+    // Cube Lighting Controls
+    if (emissiveColorPickerV2) {
+        emissiveColorPickerV2.addEventListener('input', (e) => {
+            const color = parseInt(e.target.value.substring(1), 16);
+            cubeLightingManager.setEmissiveColor(color);
+        });
+    }
+
+    if (emissiveIntensitySliderV2) {
+        emissiveIntensitySliderV2.addEventListener('input', (e) => {
+            const value = parseFloat(e.target.value);
+            emissiveIntensityValueV2.textContent = value.toFixed(1);
+            cubeLightingManager.setEmissiveIntensity(value);
+        });
+    }
+
+    if (lightIntensitySliderV2) {
+        lightIntensitySliderV2.addEventListener('input', (e) => {
+            const value = parseFloat(e.target.value);
+            lightIntensityValueV2.textContent = value.toFixed(1);
+            cubeLightingManager.setLightIntensity(value);
         });
     }
 
